@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'magaza/css/colors.css' %}">
+    <link rel="stylesheet" href="{% static 'magaza/css/auth.css' %}">
+    <title>Kayıt Ol</title>
+</head>
+
+<body>
+    <form action="/kayit/" method="post">
+        {% csrf_token %}
+        <h1>KitapSepeti</h1>
+        <h2>Kayıt Ol</h2>
+        {% if error %}
+            <p class="error"> {{error}} </p>
+        {% endif %}
+        <div class="input-box">
+            <label for="firstname">Ad:</label>
+            <input type="text" name="firstname" id="firstname" value="{{firstname}}">
+        </div>
+        <div class="input-box">
+            <label for="lastname">Soyad:</label>
+            <input type="text" name="lastname" id="lastname" value="{{lastname}}">
+        </div>
+        <div class="input-box">
+            <label for="username">Kullanıcıadı:</label>
+            <input type="text" name="username" id="username" value="{{username}}">
+        </div>
+        <div class="input-box">
+            <label for="password">Şifre</label>
+            <input type="password" name="password" id="password" value="{{password}}">
+        </div>
+        <div class="input-box">
+            <input type="submit" value="Kayıt Ol">
+        </div>
+        <div class="input-box">
+            <p class="redirect">Hesabın varmı? <a href="/giris">Giriş Yap</a></p>
+        </div>
+    </form>
+</body>
+
+</html>

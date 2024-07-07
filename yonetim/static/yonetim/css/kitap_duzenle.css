@@ -1,0 +1,129 @@
+main .cont {
+    flex-direction: column;
+}
+
+main div.new-book-form-cont {
+    display: flex;
+    justify-content: center;
+    overflow-y: auto;
+}
+
+main div.new-book-form-cont form {
+    border: 2px solid var(--main);
+    background-color: white;
+    width: 800px;
+    padding: 20px;
+    padding-bottom: 27px;
+    border-radius: 20px;
+    margin: 40px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: fit-content;
+}
+
+main div.new-book-form-cont form section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+main div.new-book-form-cont form section .book-img {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}
+
+main div.new-book-form-cont form section .book-img img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    border: 2px solid var(--main);
+}
+
+main div.new-book-form-cont form section .book-img label {
+    font-size: 1rem;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 2px solid var(--grey);
+    outline: none;
+    font-family: "Roboto", sans-serif;
+    color: var(--main);
+    cursor: pointer;
+    width: fit-content;
+}
+
+main div.new-book-form-cont form section .book-img label:hover {
+    border-color: var(--main);
+}
+
+main div.new-book-form-cont form section.title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 0;
+    border-bottom: 2px solid var(--main);
+}
+
+main div.new-book-form-cont form section.title img {
+    width: 40px;
+    cursor: pointer;
+}
+
+main div.new-book-form-cont form .input-box {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+main div.new-book-form-cont form span.error {
+    color: red;
+}
+
+
+main div.new-book-form-cont form .input-box input {
+    font-size: 1rem;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 2px solid var(--grey);
+    outline: none;
+    font-family: "Roboto", sans-serif;
+    color: var(--main);
+    background-color: white;
+}
+
+main div.new-book-form-cont form .input-box button {
+    cursor: pointer;
+    width: fit-content;
+}
+
+main div.new-book-form-cont form .input-box button:hover {
+    border-color: var(--main);
+}
+
+
+main div.new-book-form-cont form .input-box input:focus {
+    border-color: var(--main);
+}
+
+main div.new-book-form-cont form button.submit {
+    font-size: 1rem;
+    padding: 10px 15px;
+    border:none;
+    border-radius: 5px;
+    background-color: var(--second);
+    color: white;
+    font-family: "Roboto", sans-serif;
+    cursor: pointer;
+}
+
+main div.new-book-form-cont form button.submit:hover {
+    background-color: var(--light);
+}
+
+@media screen and (max-width: 600px) {
+    main div.new-book-form-cont form {
+        width: 100%;
+    }
+}

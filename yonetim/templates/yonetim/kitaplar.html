@@ -1,0 +1,123 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'yonetim/css/colors.css' %}">
+    <link rel="stylesheet" href="{% static 'yonetim/css/yonetim.css' %}">
+    <link rel="stylesheet" href="{% static 'yonetim/css/kitap.css' %}">
+    <title>Kitaplar</title>
+</head>
+
+<body>
+    <nav>
+        <div class="row title">
+            <div class="cont">
+                <a href="/yonet"><h1>KitapSepeti - Yönetim</h1></a>
+                <a class="logout" href="/yonet/cikis">Çıkış Yap</a>
+            </div>
+        </div>
+        <div class="row nav">
+            <div class="cont">
+                <ul>
+                    <li><a href="/yonet/kullanicilar"><img src="{% static 'yonetim/img/kullanici.svg' %}">kullanıcılar</a></li>
+                    <li class="active"><a href="/yonet/kitaplar"><img src="{% static 'yonetim/img/kitap.svg' %}">kitaplar</a></li>
+                    <li><a href="/yonet/kategoriler"><img src="{% static 'yonetim/img/kategori.svg' %}">kategoriler</a></li>
+                    <li><a href="/yonet/yazarlar"><img src="{% static 'yonetim/img/yazar.svg' %}">yazarlar</a></li>
+                    <li><a href="/yonet/yayinevleri"><img src="{% static 'yonetim/img/yayinevi.svg' %}">yayınevleri</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="cont">
+            <div class="action-row">
+                <button class="new-book-btn">+ Kitap Ekle</button>
+            </div>
+
+            {% if kitaplar|length < 1 %}
+                <p class="msg">Henüz kitap eklemediniz!</p>
+            {% else %}
+                <div class="books">
+                    {% for k in kitaplar %}
+                    <div class="book">
+                        <img src="{{k.resim}}">
+                        <ul class="info">
+                            <li>#{{k.id}}</li>
+                            <li>Ad: {{k.ad}}</li>
+                            <li>Yazarlar: {{k.yazar}}</li>
+                            <li>Kategoriler: {{k.kategori}}</li>
+                            <li>Fiyat: {{k.fiyat}}</li>
+                            <li>Basım Yılı: {{k.basim_yili}}</li>
+                            <li>Yayınevi: {{k.yayin_evi}}</li>
+                        </ul>
+                        <div class="btn">
+                            <a class="delete" href="/yonet/kitaplar/sil/{{k.id}}/">Sil</a>
+                            <a class="edit" href="/yonet/kitaplar/duzenle/{{k.id}}/">Düzenle</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="new-book-form-cont {% if not errors %} hidden {% endif %}">
+            <form action="/yonet/yeni-kitap-ekle/" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <section class="title">
+                    <h2>Yeni Kitap</h2>
+                    <img src="{% static 'yonetim/img/close.svg' %}">
+                </section>
+
+                <section>
+                    <h3>Kitap Resmi:</h3>
+                    <div class="book-img">
+                        <img>
+                        <input hidden type="file" name="resim" id="book-img" accept=".png, .jpg, .jpeg">
+                        {% if errors.resim %} <span class="error">* {{errors.resim}} *</span> {% endif %}
+                        <label for="book-img">Resim Seçiniz</label>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Kitap Bilgileri:</h3>
+                    <div class="input-box">
+                        <label for="book-name">Kitap Ad: {% if errors.ad %} <span class="error">* {{errors.ad}} *</span> {% endif %}</label>
+                        <input type="text" id="book-name" value="{{values.ad}}" name="ad">
+                    </div>
+                    <div class="input-box">
+                        <label for="book-price">Fiyat: {% if errors.fiyat %} <span class="error">* {{errors.fiyat}} *</span> {% endif %}</label>
+                        <input type="text" id="book-price" value="{{values.fiyat}}" name="fiyat">
+                    </div>
+                    <div class="input-box">
+                        <label for="book-year">Basım Yılı: {% if errors.basim_yili %} <span class="error">* {{errors.basim_yili}} *</span> {% endif %}</label>
+                        <input type="text" id="book-year" value="{{values.basim_yili}}" name="basim_yili">
+                    </div>
+                    <div class="input-box">
+                        <label for="book-publisher">Yayınevi: {% if errors.yayin_evi %} <span class="error">* {{errors.yayin_evi}} *</span> {% endif %}</label>
+                        <input type="text" id="book-publisher" value="{{values.yayin_evi}}" name="yayin_evi">
+                    </div>
+                    <div class="input-box">
+                        <label for="book-authers">Yazar(lar): {% if errors.yazar %} <span class="error">* {{errors.yazar}} *</span> {% endif %}</label>
+                        <input type="text" id="book-authers" value="{{values.yazar}}" name="yazar" placeholder="yazar 1, yazar 2, yazar 3, ...">
+                    </div>
+                    <div class="input-box">
+                        <label for="book-categories">Kategori(ler): {% if errors.kategori %} <span class="error">* {{errors.kategori}} *</span> {% endif %}</label>
+                        <input type="text" id="book-categories" value="{{values.kategori}}" name="kategori" placeholder="kategori 1, kategori 2, kategori 3, ...">
+                    </div>
+                </section>
+
+                <section>
+                    <button class="submit"> + Kitap Ekle </button>
+                </section>
+            </form>
+        </div>
+    </main>
+    <script src="{% static 'yonetim/js/kitap.js' %}"></script>
+</body>
+
+</html>

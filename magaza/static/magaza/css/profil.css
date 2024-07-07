@@ -1,0 +1,68 @@
+form {
+    width: 380px;
+    margin: 60px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+form h1 {
+    text-align: center;
+    font-size: 2.2rem;
+}
+
+form h2 {
+    text-align: center;
+    font-size: 2rem;
+}
+
+form .input-box {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+form p.error {
+    text-align: center;
+    color: red;
+}
+
+form .input-box input {
+    font-size: 1rem;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 2px solid var(--main);
+    outline: none;
+    font-family: "Roboto", sans-serif;
+    color: var(--main);
+    background-color: white;
+    position: relative;
+}
+
+form .input-box input[type=submit] {
+    border-radius: 5px;
+    background-color: var(--second);
+    color: white;
+    font-family: "Roboto", sans-serif;
+    cursor: pointer;
+}
+
+form .input-box input[type=submit]:hover {
+    background-color: var(--light);
+    border-color: var(--light);
+}
+
+form .input-box p.redirect {
+    text-align: center;
+}
+
+form .input-box p.redirect a {
+    text-decoration: underline;
+    color: var(--second);
+}
+
+form .input-box p.redirect a:hover {
+    color: var(--light);
+}
+
+

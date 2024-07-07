@@ -1,0 +1,103 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'magaza/css/colors.css' %}">
+    <link rel="stylesheet" href="{% static 'magaza/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'magaza/css/index.css' %}">
+    <title>Kitap Sepeti</title>
+</head>
+
+<body>
+    <nav>
+        <div class="row title">
+            <div class="cont">
+                <a href="/"><h1>KitapSepeti</h1></a>
+                <p class="user">{{user.ad}} {{user.soyad}}</p>
+            </div>
+        </div>
+        <div class="row nav">
+            <div class="cont">
+                <ul>
+                    <li class="active"><a href="/"><img src="{% static 'magaza/img/kitap.svg' %}">Kitaplar</a></li>
+                    <li><a href="/sepet"><img src="{% static 'magaza/img/sepet.svg' %}">Sepet</a></li>
+                    <li><a href="/siparislerim"><img src="{% static 'magaza/img/siparişlerim.svg' %}">Siparişlerim</a></li>
+                    <li><a href="/profil"><img src="{% static 'magaza/img/profil.svg' %}">Profil</a></li>
+                    <li><a href="/cikis"><img src="{% static 'magaza/img/cikis.svg' %}">Çıkış Yap</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <form class="filter">
+        <div class="cont">
+            <h2>Filtre:</h2>
+            <div class="groups">
+                <div class="filter-group">
+                    <h3>Kategoriler:</h3>
+                    <ul>
+                        {% for k in kategoriler %}
+                        <li>
+                            <input type="checkbox" id="{{k.ad}}" name="kategoriler" value="{{k.ad}}" {% if k.checked %} checked {% endif %}>
+                            <label for="{{k.ad}}">{{k.ad}}</label>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="filter-group">
+                    <h3>Yazarlar:</h3>
+                    <ul>
+                        {% for y in yazarlar %}
+                        <li>
+                            <input type="checkbox" id="{{y.ad}}" name="yazarlar" value="{{y.ad}}" {% if y.checked %} checked {% endif %}>
+                            <label for="{{y.ad}}">{{y.ad}}</label>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="filter-group">
+                    <h3>Yayınevleri:</h3>
+                    <ul>
+                        {% for ye in yayinevleri %}
+                        <li>
+                            <input type="checkbox" id="{{ye.ad}}" name="yayinevleri" value="{{ye.ad}}" {% if ye.checked %} checked {% endif %}>
+                            <label for="{{ye.ad}}">{{ye.ad}}</label>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="filter-group">
+                    <input type="submit" value="filtre">
+                    <a href="/">temizle</a>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="kitaplar">
+        <div class="cont">
+            {% if not kitaplar %}
+            <p class="kitap-yok-msg">Belirledinğiz kriterlere göre sonuç bulunamadı</p>
+            {% endif %}
+
+            {% for k in kitaplar %}
+            <a class="kitap" href="/kitap/{{k.id}}">
+                <div class="img">
+                    <img src="{{k.resim}}">
+                </div>
+                <div class="info">
+                    <p class="yayinevi">✎ {{k.yayin_evi}} - {{k.basim_yili}} </p>
+                    <h3>{{k.ad}}</h3>
+                    <p class="yazar">👤 {{k.yazar}}</p>
+                    <p class="kategori">֍ {{k.kategori}}</p>
+                    <p class="fiyat">{{k.fiyat}} TL</p>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+
+</html>

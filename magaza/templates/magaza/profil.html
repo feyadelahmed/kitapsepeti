@@ -1,0 +1,106 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'magaza/css/colors.css' %}">
+    <link rel="stylesheet" href="{% static 'magaza/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'magaza/css/profil.css' %}">
+    <title>Profil</title>
+</head>
+
+<body>
+    <nav>
+        <div class="row title">
+            <div class="cont">
+                <a href="/"><h1>KitapSepeti</h1></a>
+                <p class="user">{{user.ad}} {{user.soyad}}</p>
+            </div>
+        </div>
+        <div class="row nav">
+            <div class="cont">
+                <ul>
+                    <li><a href="/"><img src="{% static 'magaza/img/kitap.svg' %}">Kitaplar</a></li>
+                    <li><a href="/sepet"><img src="{% static 'magaza/img/sepet.svg' %}">Sepet</a></li>
+                    <li><a href="/siparislerim"><img src="{% static 'magaza/img/siparişlerim.svg' %}">Siparişlerim</a></li>
+                    <li class="active"><a href="/profil"><img src="{% static 'magaza/img/profil.svg' %}">Profil</a></li>
+                    <li><a href="/cikis"><img src="{% static 'magaza/img/cikis.svg' %}">Çıkış Yap</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <form action="/profil/?action=guncelle" method="post">
+        {% csrf_token %}
+        <h1>Profil</h1>
+        <h2>{{user.kullaniciadi}}</h2>
+        {% if error %}
+            <p class="error"> {{error}} </p>
+        {% endif %}
+        <div class="input-box">
+            <label for="firstname">Ad:</label>
+            <input type="text" name="firstname" id="firstname" value="{{user.ad}}">
+        </div>
+        <div class="input-box">
+            <label for="lastname">Soyad:</label>
+            <input type="text" name="lastname" id="lastname" value="{{user.soyad}}">
+        </div>
+        <div class="input-box">
+            <input type="submit" value="Güncelle">
+        </div>
+    </form>
+
+    <form action="/profil/?action=adres" method="post">
+        {% csrf_token %}
+        <h2>Adres Güncelleme</h2>
+        {% if adreserror %}
+            <p class="error"> {{adreserror}} </p>
+        {% endif %}
+        <div class="input-box">
+            <label for="address">Adres:</label>
+            <input type="text" name="address" id="address" value="{{user.adres}}">
+        </div>
+        <div class="input-box">
+            <input type="submit" value="Adresi Güncelle">
+        </div>
+    </form>
+
+    <form action="/profil/?action=sifre" method="post">
+        {% csrf_token %}
+        <h2>Şifre Yenileme</h2>
+        {% if sifreerror %}
+            <p class="error"> {{sifreerror}} </p>
+        {% endif %}
+        <div class="input-box">
+            <label for="oldpassword">Eski Şifre:</label>
+            <input type="text" name="oldpassword" id="oldpassword">
+        </div>
+        <div class="input-box">
+            <label for="newpassword">Yeni Şifre:</label>
+            <input type="password" name="newpassword" id="newpassword">
+        </div>
+        <div class="input-box">
+            <input type="submit" value="Şifreyi Değiştir">
+        </div>
+    </form>
+
+    {% if user.kullaniciadi != "admin" %}
+    <form action="/profil/?action=sil" method="post">
+        {% csrf_token %}
+        <h2>Hesabı Silme:</h2>
+        {% if silerror %}
+            <p class="error"> {{silerror}} </p>
+        {% endif %}
+        <div class="input-box">
+            <label for="password">Şifre:</label>
+            <input type="text" name="password" id="password">
+        </div>
+        <div class="input-box">
+            <input type="submit" value="Hesabı Sil">
+        </div>
+    </form>
+    {% endif %}
+</body>
+</html>

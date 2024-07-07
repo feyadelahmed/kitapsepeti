@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'magaza/css/colors.css' %}">
+    <link rel="stylesheet" href="{% static 'magaza/css/auth.css' %}">
+    <title>Giriş Yap</title>
+</head>
+
+<body>
+    <form action="/giris/" method="post">
+        {% csrf_token %}
+        <h1>KitapSepeti</h1>
+        <h2>Giriş Yap</h2>
+        {% if error %}
+            <p class="error"> {{error}} </p>
+        {% endif %}
+        <div class="input-box">
+            <label for="username">Kullanıcıadı:</label>
+            <input type="text" name="username" id="username" value="{{username}}">
+        </div>
+        <div class="input-box">
+            <label for="password">Şifre</label>
+            <input type="password" name="password" id="password" value="{{password}}">
+        </div>
+        <div class="input-box">
+            <input type="submit" value="Giriş Yap">
+        </div>
+        <div class="input-box">
+            <p class="redirect">Hesabın yokmu? <a href="/kayit">Kayit Ol</a></p>
+        </div>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+:root {
+    font-family: "Roboto", sans-serif;;
+}
+
+form.filter {
+    background-color: var(--main);
+    color: white;
+    padding: 20px 10px;
+}
+
+form.filter .cont {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+form.filter .cont .groups {
+    display: flex;
+    gap: 10px;
+}
+
+form.filter .filter-group {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+form.filter .filter-group ul {
+    list-style-type: none;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+form.filter .filter-group:last-child {
+    justify-content: start;
+    align-items: center;
+}
+
+form.filter .filter-group:last-child a,
+form.filter .filter-group:last-child input {
+    font-size: 1rem;
+    padding: 10px 15px;
+    border:none;
+    border-radius: 5px;
+    background-color: var(--second);
+    color: white;
+    font-family: "Roboto", sans-serif;
+    cursor: pointer;
+    
+}
+
+form.filter .filter-group:last-child a:hover,
+form.filter .filter-group:last-child input:hover {
+    background-color: var(--light);
+}
+
+.kitaplar {
+    padding: 20px;
+}
+
+.kitaplar .cont {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.kitaplar .kitap {
+    display: block;
+    width: 250px;
+    border: 2px solid var(--main);
+    color: black;
+}
+
+.kitaplar .kitap .img {
+    width: 246px;
+    height: 246px;
+}
+
+.kitaplar .kitap .img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.kitaplar .kitap .info {
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.kitaplar .kitap .info h3 {
+    color: var(--main);
+    font-size: 1.5rem;
+}
+
+.kitaplar .kitap-yok-msg {
+    margin: 20px auto;
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: var(--second);
+    color: white;
+}

@@ -1,0 +1,216 @@
+main .cont {
+    flex-direction: column;
+}
+
+main .action-row {
+    display: flex;
+    margin: 20px 0;
+}
+
+main .action-row .new-book-btn {
+    background-color: var(--green-light);
+    border: none;
+    outline: none;
+    padding: 10px 15px;
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+main .action-row .new-book-btn:hover {
+    background-color: var(--green-dark);
+}
+
+main p.msg {
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: var(--second);
+    color: white;
+}
+
+main .books {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+main .books .book {
+    display: flex;
+    gap: 10px;
+    border: 1px solid var(--light);
+    padding: 10px 15px;
+}
+
+main .books .book img {
+    width: 200px;
+    object-fit: contain;
+}
+
+main .books .book ul.info {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+}
+
+main .books .book .btn {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+}
+
+main .books .book .btn a {
+    font-size: 1rem;
+    padding: 10px 15px;
+    border:none;
+    border-radius: 5px;
+    background-color: var(--second);
+    color: white;
+    font-family: "Roboto", sans-serif;
+    cursor: pointer;
+    text-align: center;
+}
+
+main .books .book .btn a:hover {
+    background-color: var(--light);
+}
+
+main div.new-book-form-cont {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--grey-opacity);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    overflow-y: auto;
+}
+
+main div.new-book-form-cont form {
+    background-color: white;
+    width: 800px;
+    padding: 20px;
+    padding-bottom: 27px;
+    border-radius: 20px;
+    margin: 40px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: fit-content;
+}
+
+main div.new-book-form-cont form section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+main div.new-book-form-cont form section .book-img {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}
+
+main div.new-book-form-cont form section .book-img img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    border: 2px solid var(--main);
+}
+
+main div.new-book-form-cont form section .book-img label {
+    font-size: 1rem;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 2px solid var(--grey);
+    outline: none;
+    font-family: "Roboto", sans-serif;
+    color: var(--main);
+    cursor: pointer;
+    width: fit-content;
+}
+
+main div.new-book-form-cont form section .book-img label:hover {
+    border-color: var(--main);
+}
+
+main div.new-book-form-cont form section.title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 0;
+    border-bottom: 2px solid var(--main);
+}
+
+main div.new-book-form-cont form section.title img {
+    width: 40px;
+    cursor: pointer;
+}
+
+main div.new-book-form-cont form .input-box {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+main div.new-book-form-cont form span.error {
+    color: red;
+}
+
+
+main div.new-book-form-cont form .input-box input {
+    font-size: 1rem;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 2px solid var(--grey);
+    outline: none;
+    font-family: "Roboto", sans-serif;
+    color: var(--main);
+    background-color: white;
+}
+
+main div.new-book-form-cont form .input-box button {
+    cursor: pointer;
+    width: fit-content;
+}
+
+main div.new-book-form-cont form .input-box button:hover {
+    border-color: var(--main);
+}
+
+
+main div.new-book-form-cont form .input-box input:focus {
+    border-color: var(--main);
+}
+
+main div.new-book-form-cont form button.submit {
+    font-size: 1rem;
+    padding: 10px 15px;
+    border:none;
+    border-radius: 5px;
+    background-color: var(--second);
+    color: white;
+    font-family: "Roboto", sans-serif;
+    cursor: pointer;
+}
+
+main div.new-book-form-cont form button.submit:hover {
+    background-color: var(--light);
+}
+
+main div.new-book-form-cont.hidden {
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+    main div.new-book-form-cont form {
+        width: 100%;
+    }
+}

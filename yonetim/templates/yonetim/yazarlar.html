@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'yonetim/css/colors.css' %}">
+    <link rel="stylesheet" href="{% static 'yonetim/css/yonetim.css' %}">
+    <link rel="stylesheet" href="{% static 'yonetim/css/yazar_kategori_yayin.css' %}">
+    <title>Yazarlar</title>
+</head>
+
+<body>
+    <nav>
+        <div class="row title">
+            <div class="cont">
+                <a href="/yonet"><h1>KitapSepeti - Yönetim</h1></a>
+                <a class="logout" href="/yonet/cikis">Çıkış Yap</a>
+            </div>
+        </div>
+        <div class="row nav">
+            <div class="cont">
+                <ul>
+                    <li><a href="/yonet/kullanicilar"><img src="{% static 'yonetim/img/kullanici.svg' %}">kullanıcılar</a></li>
+                    <li><a href="/yonet/kitaplar"><img src="{% static 'yonetim/img/kitap.svg' %}">kitaplar</a></li>
+                    <li><a href="/yonet/kategoriler"><img src="{% static 'yonetim/img/kategori.svg' %}">kategoriler</a></li>
+                    <li class="active"><a href="/yonet/yazarlar"><img src="{% static 'yonetim/img/yazar.svg' %}">yazarlar</a></li>
+                    <li><a href="/yonet/yayinevleri"><img src="{% static 'yonetim/img/yayinevi.svg' %}">yayınevleri</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="cont">
+            {% if yazarlar|length < 1 %}
+                <p class="msg">Yazar yok, Henüz kitap eklemediniz!</p>
+            {% else %}
+                <div class="items">
+                    {% for y in yazarlar %}
+                    <form class="item" method="post" action="/yonet/yazarlar/guncelle/{{y.id}}/">
+                        {% csrf_token %}
+                        <input class="input" type="text" name="yazar-{{y.id}}" value="{{y.ad}}">
+                        <input class="submit" type="submit" value="Güncelle">
+                    </form>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </main>
+</body>
+
+</html>

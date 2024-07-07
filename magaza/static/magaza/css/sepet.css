@@ -1,0 +1,89 @@
+:root {
+    font-family: "Roboto", sans-serif;;
+}
+
+.cont {
+    display: flex;
+    gap: 20px;
+}
+
+.header .odeme a {
+    margin-top: 20px;
+    display: block;
+    font-size: 1rem;
+    padding: 10px 15px;
+    border:none;
+    border-radius: 5px;
+    background-color: var(--second);
+    color: white;
+    font-family: "Roboto", sans-serif;
+    cursor: pointer;
+}
+
+.header .odeme a:hover {
+    background-color: var(--light);
+}
+
+.kitaplar {
+    padding: 20px;
+}
+
+.kitaplar .cont {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.kitaplar .kitap {
+    display: block;
+    width: 250px;
+    border: 2px solid var(--main);
+    color: black;
+}
+
+.kitaplar .kitap .img {
+    width: 246px;
+    height: 246px;
+}
+
+.kitaplar .kitap .img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.kitaplar .kitap .info {
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.kitaplar .kitap .info h3 {
+    color: var(--main);
+    font-size: 1.5rem;
+}
+
+.header .kitap-yok-msg {
+    margin: 20px auto;
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: var(--second);
+    color: white;
+}
+
+.kitaplar .kitap a {
+    font-size: 1rem;
+    padding: 10px 15px;
+    border:none;
+    border-radius: 5px;
+    background-color: var(--second);
+    color: white;
+    font-family: "Roboto", sans-serif;
+    cursor: pointer;
+}
+
+.kitaplar .kitap a:hover {
+    background-color: var(--light);
+}

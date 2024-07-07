@@ -1,0 +1,52 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'magaza/css/colors.css' %}">
+    <link rel="stylesheet" href="{% static 'magaza/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'magaza/css/kitap.css' %}">
+    <title>kitap - {{kitap.ad}}</title>
+</head>
+
+<body>
+    <nav>
+        <div class="row title">
+            <div class="cont">
+                <a href="/"><h1>KitapSepeti</h1></a>
+                <p class="user">{{user.ad}} {{user.soyad}}</p>
+            </div>
+        </div>
+        <div class="row nav">
+            <div class="cont">
+                <ul>
+                    <li class="active"><a href="/"><img src="{% static 'magaza/img/kitap.svg' %}">Kitaplar</a></li>
+                    <li><a href="/sepet"><img src="{% static 'magaza/img/sepet.svg' %}">Sepet</a></li>
+                    <li><a href="/siparislerim"><img src="{% static 'magaza/img/siparişlerim.svg' %}">Siparişlerim</a></li>
+                    <li><a href="/profil"><img src="{% static 'magaza/img/profil.svg' %}">Profil</a></li>
+                    <li><a href="/cikis"><img src="{% static 'magaza/img/cikis.svg' %}">Çıkış Yap</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="cont">
+        <div class="kitap">
+            <div class="img">
+                <img src="{{kitap.resim}}">
+            </div>
+            <div class="info">
+                <p class="yayinevi">✎ {{kitap.yayin_evi}} - {{kitap.basim_yili}} </p>
+                <h3>{{kitap.ad}}</h3>
+                <p class="yazar">👤 {{kitap.yazar}}</p>
+                <p class="kategori">֍ {{kitap.kategori}}</p>
+                <p class="fiyat">{{kitap.fiyat}} TL</p>
+                <a href="/sepet/ekle/{{kitap.id}}">+ Sepete Ekle</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

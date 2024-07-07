@@ -1,0 +1,11 @@
+:root {
+  --main: #051923;
+  --second: #003554;
+  --light: #00A6FB;
+
+  --grey: #bdc3c7;
+  --grey-opacity: rgba(52, 73, 94, .5);  
+
+  --green-light: #2ecc71;
+  --green-dark: #27ae60;
+}
